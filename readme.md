@@ -70,3 +70,5 @@ bin/console rabbitmq:consumer save_db
 ```
 bin/console rabbitmq:consumer dlx_save_db
 ```
+
+The interaction diagram can be viewed in [Draw.io](https://app.diagrams.net) by opening the 'chat' file in the root of the project.
