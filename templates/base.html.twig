@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Best chat in the world!</title>
+
+    {% block style %}
+        <link rel="stylesheet" href="{{ absolute_url('src/css/main.css') }}">
+        <link rel="stylesheet" href="{{ absolute_url('src/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ absolute_url('src/css/fontawesome.min.css') }}">
+        <link rel="stylesheet" href="{{ absolute_url('src/css/adminlte.min.css') }}">
+    {% endblock %}
+</head>
+<body>
+
+<div class="alert alert-danger alert-dismissible fade show position-absolute col-3" role="alert" style="right: 15vh; top: 15vh; z-index: 10000; display: none;">
+    <strong>Ошибка отправки!</strong> Не удалось отправить сообщение, попробуйте позже.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+{% block body %}{% endblock %}
+
+{% block script %}
+    <script>
+        var rabbitmq = {
+            url: 'ws://127.0.0.1:15674/ws',
+            login: 'user',
+            password: '123'
+        }
+
+        {% if app.user %}
+        var userId = '{{ app.user.id.toRfc4122 }}';
+        var userFullName = '{{ app.user.fullName }}';
+        var userAvatar = '{{ app.user.avatar }}';
+        {% endif %}
+    </script>
+
+    <script src="{{ absolute_url('src/js/jquery.min.js') }}"></script>
+    <script src="{{ absolute_url('src/js/bootstrap.min.js') }}"></script>
+    <script src="{{ absolute_url('src/js/fontawesome.min.js') }}"></script>
+    <script src="{{ absolute_url('src/js/adminlte.min.js') }}"></script>
+    <script src="{{ absolute_url('src/js/stomp.min.js') }}"></script>
+    <script src="{{ absolute_url('src/js/helpers.js') }}"></script>
+    <script src="{{ absolute_url('src/js/main.js') }}"></script>
+{% endblock %}
+</body>
+</html>

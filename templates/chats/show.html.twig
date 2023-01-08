@@ -1,0 +1,37 @@
+{% extends 'body.html.twig' %}
+
+{% block content %}
+    <div class="card direct-chat direct-chat-primary min-h">
+        <div class="card-header">
+            <h3 class="card-title">Чат с Вася Пупкин</h3>
+        </div>
+
+        <div class="card-body">
+            <div class="direct-chat-messages min-h">
+                {% for message in chat %}
+                    {{ include('chats/message.html.twig') }}
+                {% endfor %}
+
+                <div class="direct-chat-infos clearfix" id="write" style="display: none">
+                    <p style="color: #697582" class="m-0"><span></span> набирает сообщение
+                        <img src="{{ absolute_url('src/img/loader.gif') }}" style="width: 15px" alt="">
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <div class="input-group">
+                <input id="message" placeholder="Сообщение..." class="form-control" autofocus autocomplete="off"
+                       onkeydown="sendWrite()">
+                <span class="input-group-append"><button type="button" class="btn btn-primary" onclick="send()"
+                                                         id="btn_send" disabled>Отправить</button></span>
+            </div>
+        </div>
+
+        <div>
+            <button id="connect" onclick="connect()">connect</button>
+            <button id="disconnect" onclick="disconnect()">disconnect</button>
+        </div>
+    </div>
+{% endblock %}

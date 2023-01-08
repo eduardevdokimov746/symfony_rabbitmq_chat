@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="wrapper">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <ul class="navbar-nav" id="burger-menu">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#"
+                       role="button"><i class="fas fa-bars"></i>
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('app.logout') }}">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <a class="brand-link" href="#">
+                <span class="brand-text font-weight-light d-flex justify-content-center">Best Chat!</span>
+            </a>
+
+            <div class="sidebar">
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="{{ absolute_url('src/img/' ~ app.user.avatar) }}" class="img-circle">
+                    </div>
+                    <div class="info">
+                        <a href="#" class="d-block">{{ app.user.fullName }}</a>
+                    </div>
+                </div>
+
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+
+
+
+
+
+
+                        <li class="nav-item">
+                            <a href="#"
+                               class="nav-link">
+                                <i class="fa-solid fa-users"></i>
+                                <p>Беседа</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fa-solid fa-newspaper"></i>
+                                <p>Канал</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fa-solid fa-comments"></i>
+                                <p>Личный</p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <div class="content-wrapper">
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-8 m-auto pt-4">
+                            {% block content %}{% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer class="main-footer">
+            <strong>Copyright © 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+        </footer>
+    </div>
+{% endblock %}

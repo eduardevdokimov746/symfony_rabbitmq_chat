@@ -1,0 +1,14 @@
+{% set type = message.sender.id.compare(app.user.id) == 0 ? 'right' : 'left' %}
+
+<div class="direct-chat-msg {{ type == 'right' ? 'right' }}">
+    <div class="direct-chat-infos clearfix">
+        <span class="direct-chat-name {{ type == 'left' ? 'float-left' }}">{{ message.sender.fullName }}</span>
+        <span class="direct-chat-timestamp float-right">{{ message.publishedAt.timestamp }}</span>
+    </div>
+
+    <img class="direct-chat-img" src="{{ absolute_url('src/img/' ~ message.sender.avatar) }}" alt="">
+
+    <div class="direct-chat-text">
+        {{ message.body }}
+    </div>
+</div>
